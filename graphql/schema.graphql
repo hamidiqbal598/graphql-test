@@ -1,0 +1,30 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+#type Query {
+#    # ! this indicates that is compulsory (required)
+##    user(id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+##        email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])): User @find
+##    user: User @find # givers error as it return all and need id
+##    user(id: ID): User @find # still gives error because it doesn't which field i have to compare si it means where clause is missing
+#    user(id: ID @eq): User @find  #if there is no value on this id then might we get null values
+#    # @find is a resolver
+#
+#
+##    users(name: String @where(operator: "like")): [User!]! @paginate(defaultCount: 10)
+##    users: User @all  # it returns collection of objects, collection include array of objects
+##    users: [User] @all  #Giving me array of users all
+##    users: [User!] @all  #Giving me array of users only which values are not null
+##    users: [User!]! @all  #Giving me array of users only which values are not null and giving confidence we are getting array
+#    users: [User!]! @paginate
+#
+#    posts: [Post!]! @all #this is okay but it creates N+1 problem so solution is to use with directives
+#    post(id: ID @eq): Post @find  #if there is no value on this id then might we get null values
+#
+#
+#}
+#
+
+
+
+#import models/*.graphql
